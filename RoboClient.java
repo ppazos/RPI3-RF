@@ -141,6 +141,8 @@ System.out.println("LEFT!!!");
          }
       });
 
+      int state_param;
+
       while(true)
       {
          Thread.sleep(500);
@@ -150,11 +152,15 @@ System.out.println("LEFT!!!");
          try
          {
             // TODO: dont sent stop and let client stop if dont reveice other commands
-            Process p = Runtime.getRuntime().exec("rpi-rf_send "+state.getState());
-            BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            state_param = state.getState();
+
+            Process p = Runtime.getRuntime().exec("rpi-rf_send "+state_param);
+//Process p = Runtime.getRuntime().exec("rpi-rf_send 123");
+
+            //BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
             //int ret = new Integer(in.readLine()).intValue();
             //System.out.println("value is : "+ret);
-System.out.println(in.readLine());
+            //in.readLine();
          }
          catch(Exception e)
          {
